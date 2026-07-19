@@ -6,6 +6,8 @@
 
 #include "Matrix.h"
 
+// For Levenstein and Damerau-Levenstein distance calculation
+
 template <class charT>
 class EditDistanceMatrix: private Matrix<size_t> {
 public:
