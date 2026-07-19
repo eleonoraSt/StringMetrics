@@ -7,9 +7,11 @@
 
 #include "EditDistanceMatrix.h"
 
+constexpr short OPERATIONS_NUM = 4;
+
 template <class charT>
 size_t editDistance(const std::basic_string<charT>& str1, const std::basic_string<charT>& str2, \
-                    std::bitset<4> operations) {
+                    std::bitset<OPERATIONS_NUM> operations) {
     EditDistanceMatrix<charT> matrix(str1.size(), str2.size());
     matrix.Prepare();
 
