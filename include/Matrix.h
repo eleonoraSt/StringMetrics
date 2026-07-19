@@ -14,6 +14,10 @@ public:
         }
     }
 
+    Matrix() {
+        data = std::vector<T>(0);
+    }
+
     size_t GetWidth() const {
         if (data.empty()) return 0;
         return data.at(0).size();
@@ -39,6 +43,12 @@ public:
     void AddColumn(T fill = T()) {
         for (size_t row = 0; row < GetHeight(); row++) {
             data.at(row).push_back(fill);
+        }
+    }
+
+    Matrix<T> operator=(const Matrix<T>& other) {
+        if (this != &other) {
+            data = other.data;
         }
     }
 };
