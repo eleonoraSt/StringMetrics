@@ -1,19 +1,18 @@
 #ifndef EDITDISTANCE_H
 #define EDITDISTANCE_H
 
-#include "editDistance_utils.h"
+#include <deque>  // for Jaro
 
-constexpr short LEVENSTEIN = 7;
-constexpr short DAMERAU_LEVENSTEIN = 15;
+#include "editDistance_utils.h"
 
 template <class charT>
 size_t Levenstein(const std::basic_string<charT>& str1, const std::basic_string<charT>& str2) {
-    return editDistance(str1, str2, std::bitset<OPERATIONS_NUM>(LEVENSTEIN));
+    return editDistance(str1, str2, false);
 }
 
 template <class charT>
 size_t DamerauLevenstein(const std::basic_string<charT>& str1, const std::basic_string<charT>& str2) {
-    return editDistance(str1, str2, std::bitset<OPERATIONS_NUM>(DAMERAU_LEVENSTEIN));
+    return editDistance(str1, str2, true);
 }
 
 template <class charT>
@@ -49,6 +48,16 @@ size_t Lcs(const std::basic_string<charT>& str1, const std::basic_string<charT>&
     }
 
     return matrix.Get(size2, size1);
+}
+
+template <class charT>
+size_t Jaro(const std::basic_string<charT>& str1, const std::basic_string<charT>& str2) {
+    std::deque<charT> str2list(str2.begin(), str2.end());
+    size_t size1 = str1.size(), size2 = str2.size();
+
+    for (size_t index = 0; index < size1; index++) {
+        .
+    }
 }
 
 #endif // EDITDISTANCE_H
