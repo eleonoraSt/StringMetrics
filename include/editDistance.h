@@ -50,14 +50,4 @@ size_t Lcs(const std::basic_string<charT>& str1, const std::basic_string<charT>&
     return matrix.Get(size2, size1);
 }
 
-template <class charT>
-size_t Jaro(const std::basic_string<charT>& str1, const std::basic_string<charT>& str2) {
-    std::deque<charT> str2list(str2.begin(), str2.end());
-    size_t size1 = str1.size(), size2 = str2.size();
-
-    for (size_t index = 0; index < size1; index++) {
-        .
-    }
-}
-
 #endif // EDITDISTANCE_H
