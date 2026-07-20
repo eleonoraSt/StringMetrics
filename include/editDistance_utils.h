@@ -31,4 +31,25 @@ size_t editDistance(const std::basic_string<charT>& str1, const std::basic_strin
     return matrix.Get(size2, size1);
 }
 
+template <class T>
+size_t transpositions(const std::vector<T>& perm) {
+    size_t size = perm.size();
+    std::vector<bool> visited(size, false);
+    size_t transpos = 0;
+    size_t cycle = 0;
+    size_t current = 0;
+
+    for (size_t index = 0; index < size; index++) {
+        if (visited[index] || perm[index] == index + 1) continue;
+        while (!visited[current]) {
+            visited[current] = true;
+            current = perm[current] - 1;
+            cycle++;
+        }
+        transpos += cycle - 1;
+    }
+
+    return transpos;
+}
+
 #endif // EDITDISTANCE_UTILS_H
