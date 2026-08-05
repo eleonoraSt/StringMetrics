@@ -10,7 +10,7 @@ private:
 public:
     Matrix(size_t width, size_t height, T fill = T()) {
         for (size_t index = 0; index < height; index++) {
-            data.at(index) = std::vector<T>(width, fill);
+            data.push_back(std::vector<T>(width, fill));
         }
     }
 

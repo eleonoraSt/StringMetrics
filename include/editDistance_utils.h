@@ -17,8 +17,12 @@ size_t editDistance(const std::basic_string<charT>& str1, const std::basic_strin
             size_t insertDistance = matrix.InsertDistance(row, column);
             size_t deleteDistance = matrix.DeleteDistance(row, column);
             size_t substituteDistance = matrix.SubstituteDistance(row, column, str1, str2);
-            size_t transposeDistance = transposition && row > 1 && column > 1 ? \
-                                       matrix.TransposeDistance(row, column, str1, str2) : SIZE_MAX;
+            size_t transposeDistance = SIZE_MAX;
+            if (transposition && row > 1 && column > 1) {
+                try {
+                    transposeDistance = matrix.TransposeDistance(row, column, str1, str2);
+                } catch (const std::invalid_argument& exc) {}  // transposition not applicable
+            }
             size_t minDistance = std::min({insertDistance, deleteDistance, substituteDistance, \
                                            transposeDistance});
             matrix.Set(minDistance, row, column);
