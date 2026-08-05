@@ -42,10 +42,10 @@ size_t transpositions(const std::vector<T>& perm) {
     size_t current = 0;
 
     for (size_t index = 0; index < size; index++) {
-        if (visited[index] || perm[index] == index + 1) continue;
-        while (!visited[current]) {
-            visited[current] = true;
-            current = perm[current] - 1;
+        if (visited.at(index) || perm.at(index) == index + 1) continue;
+        while (!visited.at(current)) {
+            visited.at(current) = true;
+            current = perm.at(current) - 1;
             cycle++;
         }
         transpos += cycle - 1;
