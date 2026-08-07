@@ -16,20 +16,20 @@ size_t editDistance(const std::basic_string<charT>& str1, const std::basic_strin
     if (transposition) prevPrevRow = std::vector<size_t>(size1 + 1);
     for (size_t index = 1; index <= size1; index++) prevRow[index] = index;
 
+    size_t insertDistance, deleteDistance, substituteDistance, transposeDistance = SIZE_MAX;
+    bool transposed;
     for (size_t row = 1; row <= size2; row++) {
         currentRow[0] = row;
         for (size_t column = 1; column <= size1; column++) {
-            size_t insertDistance = prevRow[column] + 1;
-            size_t deleteDistance = currentRow[column - 1] + 1;
-            size_t substituteDistance = prevRow[column - 1] + (str1[row - 1] != str2[column - 1]);
-            size_t transposeDistance = SIZE_MAX;
+            insertDistance = prevRow[column] + 1;
+            deleteDistance = currentRow[column - 1] + 1;
+            substituteDistance = prevRow[column - 1] + (str1[row - 1] != str2[column - 1]);
             if (transposition && row > 1 && column > 1) {
-                bool transposed = str1[column] == str2[row - 1] && str1[column - 1] == str2[row];
-                if (transposed) transposeDistance = prevPrevRow[column - 2] + (str1[column] == str2[row]);
+                transposed = str1[column] == str2[row - 1] && str1[column - 1] == str2[row];
+                if (transposed) transposeDistance = prevPrevRow[column - 2] + (str1[column] != str2[row]);
             }
-            size_t minDistance = std::min({insertDistance, deleteDistance, substituteDistance, \
+            currentRow[column] = std::min({insertDistance, deleteDistance, substituteDistance, \
                                            transposeDistance});
-            currentRow[column] = minDistance;
         }
 
         if (transposition) {
@@ -38,7 +38,7 @@ size_t editDistance(const std::basic_string<charT>& str1, const std::basic_strin
         std::swap(prevRow, currentRow);
     }
 
-    return currentRow[size1];
+    return prevRow[size1];
 }
 
 // May be needed later for Jaro
