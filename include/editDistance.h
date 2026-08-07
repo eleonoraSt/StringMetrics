@@ -1,6 +1,8 @@
 #ifndef EDITDISTANCE_H
 #define EDITDISTANCE_H
 
+#include <stdexcept>
+
 #include "editDistance_utils.h"
 
 template <class charT>
@@ -30,22 +32,23 @@ size_t Hamming(const std::basic_string<charT>& str1, const std::basic_string<cha
 
 template <class charT>
 size_t Lcs(const std::basic_string<charT>& str1, const std::basic_string<charT>& str2) {
-    Matrix<size_t> matrix(str1.size() + 1, str2.size() + 1);
-
     size_t size1 = str1.size(), size2 = str2.size();
+    std::vector<size_t> prevRow(size1 + 1), currentRow(size1 + 1);
+
     for (size_t row = 1; row <= size2; row++) {
         for (size_t column = 1; column <= size1; column++) {
             size_t subseq;
             if (str1.at(column) == str2.at(row)) {
-                subseq = matrix.Get(row - 1, column - 1) + 1;
+                subseq = prevRow[column - 1] + 1;
             } else {
-                subseq = std::max(matrix.Get(row - 1, column), matrix.Get(row, column - 1));
+                subseq = std::max(prevRow[column], currentRow[column - 1]);
             }
-            matrix.Set(subseq, row, column);
+            currentRow[column] = subseq;
         }
+        std::swap(prevRow, currentRow);
     }
 
-    return matrix.Get(size2, size1);
+    return currentRow[size1];
 }
 
 #endif // EDITDISTANCE_H
