@@ -19,8 +19,8 @@
  * where a number signifies the order of the step at which the item is calculated.
  *
  * For Levenstein, it is possible to only store the current and the previous angle; for
- * Damerau–Levenstein – the current and the 2 previous angles. Thus, memory usage goes from O(n^2) to
- * O(n).
+ * Damerau–Levenstein – the current and the 2 previous angles. Thus, memory usage goes from O(n * m) to
+ * O(n + m), where n, m are lengths of the strings.
  *
  * Here, linear enumeration of elements within one angle goes down from the top and then to the right
  * from the left side.
