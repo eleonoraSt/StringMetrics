@@ -10,7 +10,7 @@
 template <class charT>
 size_t editDistance(const std::basic_string<charT>& str1, const std::basic_string<charT>& str2, \
                     bool transposition) {
-    // Editing to use O(n+m) memory instead of O(n*m)
+    // O(n) memory instead of the matrix solution with O(n*m) memory
     size_t size1 = str1.size(), size2 = str2.size();
     std::vector<size_t> prevPrevRow, prevRow(size1 + 1), currentRow(size1 + 1);
     if (transposition) prevPrevRow = std::vector<size_t>(size1 + 1);
@@ -25,8 +25,9 @@ size_t editDistance(const std::basic_string<charT>& str1, const std::basic_strin
             deleteDistance = currentRow[column - 1] + 1;
             substituteDistance = prevRow[column - 1] + (str1[row - 1] != str2[column - 1]);
             if (transposition && row > 1 && column > 1) {
-                transposed = str1[column] == str2[row - 1] && str1[column - 1] == str2[row];
-                if (transposed) transposeDistance = prevPrevRow[column - 2] + (str1[column] != str2[row]);
+                transposed = str1[column - 1] == str2[row - 2] && str1[column - 2] == str2[row - 1];
+                if (transposed) transposeDistance = prevPrevRow[column - 2] + \
+                                        (str1[column - 1] != str2[row - 1]);
             }
             currentRow[column] = std::min({insertDistance, deleteDistance, substituteDistance, \
                                            transposeDistance});
