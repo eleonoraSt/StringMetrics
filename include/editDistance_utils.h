@@ -23,7 +23,7 @@ size_t editDistance(const std::basic_string<charT>& str1, const std::basic_strin
         for (size_t column = 1; column <= size1; column++) {
             insertDistance = prevRow[column] + 1;
             deleteDistance = currentRow[column - 1] + 1;
-            substituteDistance = prevRow[column - 1] + (str1[row - 1] != str2[column - 1]);
+            substituteDistance = prevRow[column - 1] + (str1[column - 1] != str2[row - 1]);
             if (transposition && row > 1 && column > 1) {
                 transposed = str1[column - 1] == str2[row - 2] && str1[column - 2] == str2[row - 1];
                 if (transposed) transposeDistance = prevPrevRow[column - 2] + \
