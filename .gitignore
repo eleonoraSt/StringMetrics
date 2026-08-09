@@ -1,4 +1,13 @@
-todo
-CMakeLists.txt
+# QtCreator automatically created folders
+
 /.qtcreator/
 /build/
+
+# CMake file
+
+CMakeLists.txt
+
+# This file is for personal notes; should public notes about planned changes be needed later, a TODO.md
+# file will be used.
+
+todo
