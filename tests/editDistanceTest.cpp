@@ -51,7 +51,7 @@ private slots:
     }
 
     void mixed() {
-        std::string str1 = "гибралтар", str2 = "лабрадор";
+        std::wstring str1 = L"гибралтар", str2 = L"лабрадор";
         QCOMPARE(Levenstein(str1, str2), 5);
     }
 };
