@@ -57,4 +57,4 @@ private slots:
 };
 
 QTEST_MAIN(TestLevenstein)
-#include "../build/Desktop_Qt_6_11_1_MinGW_64_bit-Debug/testEditDistance_autogen/include/editDistanceTest.moc"
+#include "editDistanceTest.moc"
