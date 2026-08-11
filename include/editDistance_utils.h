@@ -16,7 +16,7 @@ size_t editDistance(const std::basic_string<charT>& str1, const std::basic_strin
     if (transposition) prevPrevRow = std::vector<size_t>(size1 + 1);
     for (size_t index = 1; index <= size1; index++) prevRow[index] = index;
 
-    size_t insertDistance, deleteDistance, substituteDistance, transposeDistance = SIZE_MAX;
+    size_t insertDistance, deleteDistance, substituteDistance, transposeDistance;
     bool transposed;
     for (size_t row = 1; row <= size2; row++) {
         currentRow[0] = row;
@@ -24,6 +24,7 @@ size_t editDistance(const std::basic_string<charT>& str1, const std::basic_strin
             insertDistance = prevRow[column] + 1;
             deleteDistance = currentRow[column - 1] + 1;
             substituteDistance = prevRow[column - 1] + (str1[column - 1] != str2[row - 1]);
+            transposeDistance = SIZE_MAX;
             if (transposition && row > 1 && column > 1) {
                 transposed = str1[column - 1] == str2[row - 2] && str1[column - 2] == str2[row - 1];
                 if (transposed) transposeDistance = prevPrevRow[column - 2] + \
