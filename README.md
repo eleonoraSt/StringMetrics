@@ -4,10 +4,12 @@
 
 StringMetrics is a simple C++ tool for calculating various metrics of string similarity. Wide characters support is implemented (wchar_t, char16_t, char32_t).
 
+Metrics currently available:
+1. Levenshtein distance
+
 Metrics currently in work:
 
-1. Levenshtein distance
-2. Damerau–Levenshtein distance
+1. Damerau–Levenshtein distance
 3. Lowest common subsequence
 4. Hamming distance
 
