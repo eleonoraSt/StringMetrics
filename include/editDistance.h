@@ -38,7 +38,7 @@ size_t Lcs(const std::basic_string<charT>& str1, const std::basic_string<charT>&
     for (size_t row = 1; row <= size2; row++) {
         for (size_t column = 1; column <= size1; column++) {
             size_t subseq;
-            if (str1.at(column) == str2.at(row)) {
+            if (str1.at(column - 1) == str2.at(row - 1)) {
                 subseq = prevRow[column - 1] + 1;
             } else {
                 subseq = std::max(prevRow[column], currentRow[column - 1]);
