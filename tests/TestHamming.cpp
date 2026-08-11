@@ -7,11 +7,11 @@ class TestHamming: public QObject {
 private slots:
     void identical() {
         std::string str1 = "aaa", str2 = "aaa";
-        QCOMPARE(Levenstein(str1, str2), 0);
+        QCOMPARE(Hamming(str1, str2), 0);
         std::wstring str3 = L"Հայոց", str4 = L"Հայոց";
-        QCOMPARE(Levenstein(str3, str4), 0);
+        QCOMPARE(Hamming(str3, str4), 0);
         std::u16string str5 = u"汉字", str6 = u"汉字";
-        QCOMPARE(Levenstein(str5, str6), 0);
+        QCOMPARE(Hamming(str5, str6), 0);
     }
 
     void uneven() {
@@ -32,27 +32,27 @@ private slots:
 
     void substitution() {
         std::string str1 = "aaa", str2 = "cba";
-        QCOMPARE(Levenstein(str1, str2), 2);
+        QCOMPARE(Hamming(str1, str2), 2);
         std::wstring str3 = L"Հայոց", str4 = L"Հայո!";
-        QCOMPARE(Levenstein(str3, str4), 1);
+        QCOMPARE(Hamming(str3, str4), 1);
         std::u16string str5 = u"汉字", str6 = u"水字";
-        QCOMPARE(Levenstein(str5, str6), 1);
+        QCOMPARE(Hamming(str5, str6), 1);
     }
 
     void transposition() {
         std::string str1 = "abc", str2 = "acb";
-        QCOMPARE(Levenstein(str1, str2), 2);
+        QCOMPARE(Hamming(str1, str2), 2);
         std::wstring str3 = L"Հայոց", str4 = L"Հյաոց";
-        QCOMPARE(Levenstein(str3, str4), 2);
+        QCOMPARE(Hamming(str3, str4), 2);
         std::u16string str5 = u"汉字", str6 = u"字汉";
-        QCOMPARE(Levenstein(str5, str6), 2);
+        QCOMPARE(Hamming(str5, str6), 2);
     }
 
     void mixed() {
         std::wstring str1 = L"гибралтар", str2 = L"лабрадор.";
-        QCOMPARE(Levenstein(str1, str2), 6);
+        QCOMPARE(Hamming(str1, str2), 6);
         std::string str3 = "example", str4 = "xeomple";
-        QCOMPARE(Levenstein(str3, str4), 3);
+        QCOMPARE(Hamming(str3, str4), 3);
     }
 };
 
