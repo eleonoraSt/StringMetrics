@@ -6,10 +6,7 @@ StringMetrics is a simple C++ tool for calculating various metrics of string sim
 
 Metrics currently available:
 1. Levenshtein distance
-
-Metrics currently in work:
-
-1. Damerau–Levenshtein distance
+2. Damerau–Levenshtein distance
 3. Lowest common subsequence
 4. Hamming distance
 
