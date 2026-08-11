@@ -57,4 +57,4 @@ private slots:
 };
 
 QTEST_MAIN(TestLevenstein)
-#include "editDistanceTest.moc"
+#include "TestLevenstein.moc"
