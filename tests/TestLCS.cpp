@@ -16,7 +16,7 @@ private slots:
 
     void insertion() {
         std::string str1 = "aaa", str2 = "aabca";
-        QCOMPARE(Lcs(str1, str2), 2);
+        QCOMPARE(Lcs(str1, str2), 3);
         std::wstring str3 = L"Հայոց", str4 = L"աՀայոց";
         QCOMPARE(Lcs(str3, str4), 5);
         std::u16string str5 = u"汉字", str6 = u"汉字字";
@@ -27,7 +27,7 @@ private slots:
         std::string str1 = "abcd", str2 = "bc";
         QCOMPARE(Lcs(str1, str2), 2);
         std::string str2_5 = "ad";
-        QCOMPARE(Lcs(str1, str2_5), 1);
+        QCOMPARE(Lcs(str1, str2_5), 2);
         std::wstring str3 = L"Հայոց", str4 = L"Հայ";
         QCOMPARE(Lcs(str3, str4), 3);
         std::u16string str5 = u"汉字", str6 = u"字";
@@ -36,7 +36,7 @@ private slots:
 
     void substitution() {
         std::string str1 = "aaa", str2 = "aba";
-        QCOMPARE(Lcs(str1, str2), 1);
+        QCOMPARE(Lcs(str1, str2), 2);
         std::wstring str3 = L"Հայոց", str4 = L"Հայո!";
         QCOMPARE(Lcs(str3, str4), 4);
         std::u16string str5 = u"汉字", str6 = u"水字";
@@ -45,9 +45,9 @@ private slots:
 
     void mixed() {
         std::wstring str1 = L"гибралтар", str2 = L"лабрадор";
-        QCOMPARE(Levenstein(str1, str2), 3);
+        QCOMPARE(Lcs(str1, str2), 4);
         std::string str3 = "example", str4 = "xeomple";
-        QCOMPARE(Levenstein(str3, str4), 4);
+        QCOMPARE(Lcs(str3, str4), 5);
     }
 };
 
