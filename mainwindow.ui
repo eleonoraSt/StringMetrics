@@ -34,7 +34,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="LevensteinButton">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -47,7 +47,7 @@
      <string>Левенштейн</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="DamerauLevensteinButton">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -60,7 +60,7 @@
      <string>Дамерау-Левенштейн</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="LCSButton">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -73,7 +73,7 @@
      <string> НОП (Подпоследовательность)</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QPushButton" name="HammingButton">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -86,7 +86,7 @@
      <string>Хэмминг</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="LevensteinLabel">
     <property name="geometry">
      <rect>
       <x>220</x>
@@ -99,7 +99,7 @@
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QLabel" name="DamerauLevensteinLabel">
     <property name="geometry">
      <rect>
       <x>220</x>
@@ -112,7 +112,7 @@
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label_3">
+   <widget class="QLabel" name="LCSLabel">
     <property name="geometry">
      <rect>
       <x>220</x>
@@ -125,7 +125,7 @@
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label_4">
+   <widget class="QLabel" name="HammingLabel">
     <property name="geometry">
      <rect>
       <x>220</x>
