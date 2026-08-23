@@ -158,7 +158,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>22</height>
+     <height>18</height>
     </rect>
    </property>
   </widget>
@@ -174,7 +174,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>201</x>
-     <y>383</y>
+     <y>401</y>
     </hint>
     <hint type="destinationlabel">
      <x>361</x>
@@ -190,7 +190,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>181</x>
-     <y>409</y>
+     <y>427</y>
     </hint>
     <hint type="destinationlabel">
      <x>346</x>
@@ -206,7 +206,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>160</x>
-     <y>444</y>
+     <y>462</y>
     </hint>
     <hint type="destinationlabel">
      <x>359</x>
@@ -222,11 +222,43 @@
    <hints>
     <hint type="sourcelabel">
      <x>119</x>
-     <y>465</y>
+     <y>483</y>
     </hint>
     <hint type="destinationlabel">
      <x>360</x>
      <y>403</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>textEdit</sender>
+   <signal>textChanged()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>ClearOutput()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>375</x>
+     <y>74</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>402</x>
+     <y>65</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>textEdit_2</sender>
+   <signal>textChanged()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>ClearOutput()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>590</x>
+     <y>198</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
     </hint>
    </hints>
   </connection>
@@ -236,5 +268,6 @@
   <slot>DamerauLevenstein_slot()</slot>
   <slot>LCS_slot()</slot>
   <slot>Hamming_slot()</slot>
+  <slot>ClearOutput()</slot>
  </slots>
 </ui>

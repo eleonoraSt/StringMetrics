@@ -19,6 +19,14 @@ MainWindow::~MainWindow() {
     delete ui;
 }
 
+void MainWindow::ClearOutput() {
+    ui->ErrorMsg->setText("");
+    ui->LevensteinLabel->setText("");
+    ui->DamerauLevensteinLabel->setText("");
+    ui->LCSLabel->setText("");
+    ui->HammingLabel->setText("");
+}
+
 void MainWindow::Levenstein_slot() {
     MetricSlotWrapper(Levenstein<wchar_t>, ui->LevensteinLabel);
 }

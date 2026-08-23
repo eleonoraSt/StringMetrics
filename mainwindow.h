@@ -21,6 +21,8 @@ public:
     ~MainWindow() override;
 
 public slots:
+    void ClearOutput();
+
     void Levenstein_slot();
     void DamerauLevenstein_slot();
     void LCS_slot();
