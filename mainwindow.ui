@@ -152,5 +152,76 @@
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>LevensteinButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>Levenstein_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>201</x>
+     <y>383</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>361</x>
+     <y>447</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>DamerauLevensteinButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>DamerauLevenstein_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>181</x>
+     <y>409</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>346</x>
+     <y>472</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>LCSButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>LCS_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>160</x>
+     <y>444</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>359</x>
+     <y>427</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>HammingButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>Hamming_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>119</x>
+     <y>465</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>360</x>
+     <y>403</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>Levenstein_slot()</slot>
+  <slot>DamerauLevenstein_slot()</slot>
+  <slot>LCS_slot()</slot>
+  <slot>Hamming_slot()</slot>
+ </slots>
 </ui>
