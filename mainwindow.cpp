@@ -32,5 +32,9 @@ void MainWindow::LCS_slot() {
 }
 
 void MainWindow::Hamming_slot() {
-    MetricSlotWrapper(Hamming<wchar_t>, ui->HammingLabel);
+    try {
+        MetricSlotWrapper(Hamming<wchar_t>, ui->HammingLabel);
+    } catch (std::invalid_argument exc) {
+        ui->ErrorMsg->setText("Введите две строки одинаковой длины");
+    }
 }
