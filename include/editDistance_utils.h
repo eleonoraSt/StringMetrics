@@ -52,13 +52,12 @@ bool isContinuation(charT character) {
 
 template <class charT>
 size_t sizeInVarLengthChar(const std::basic_string<charT>& str) {
-    size_t size = str.size();
-    if (sizeof str[0] == 4) return size;  // 4-byte chars do not have variable length
-    size_t continuation = 0;
+    if (sizeof str[0] == 4) return str.size();  // 4-byte chars do not have variable length
+    size_t size = 0;
     for (size_t index = 0; index < size; index++) {
-        if (isContinuation(str[index])) continuation++;
+        if (!isContinuation(str[index])) size++;
     }
-    return size - continuation;
+    return size;
 }
 
 // Levenstein or Damerau-Levenstein

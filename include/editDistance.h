@@ -17,12 +17,20 @@ size_t DamerauLevenstein(const std::basic_string<charT>& str1, const std::basic_
 
 template <class charT>
 size_t Hamming(const std::basic_string<charT>& str1, const std::basic_string<charT>& str2) {
-    if (str1.size() != str2.size()) throw std::invalid_argument("Hamming distance not applicable");
+    if (sizeInVarLengthChar(str1) != sizeInVarLengthChar(str2)) throw std::invalid_argument("Hamming distance not applicable");
     size_t distance = 0;
     auto it1 = str1.begin();
     auto it2 = str2.begin();
-    auto finish1 = str1.end();
+    auto finish1 = str1.end();  // same number of non-continuation characters
     while (it1 != finish1) {
+        if (isContinuation(*it1)) {
+            it1++;
+            continue;
+        }
+        if (isContinuation(*it2)) {
+            it2++;
+            continue;
+        }
         if (*it1 != *it2) distance++;
         it1++;
         it2++;
