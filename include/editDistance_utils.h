@@ -11,7 +11,13 @@
 short multibyteCharLenUTF8(char highByte);
 
 // Compares chars that might be multibyte in UTF-8 strings (1-byte chars)
-bool equalCharsUTF8(const std::string& str1, size_t index1, const std::string& str2, size_t index2);
+bool equalCharsUTF8(const std::string& str1, size_t pos1, const std::string& str2, size_t pos2);
+
+// Determines the length of the multibyte char16_t
+short multibyteCharLenUTF16(char16_t highBytes);
+
+// Compares chars that might be multibyte in UTF-8 strings (1-byte chars)
+bool equalCharsUTF16(const std::u16string& str1, size_t pos1, const std::u16string& str2, size_t pos2);
 
 template <class charT>
 size_t editDistance(const std::basic_string<charT>& str1, const std::basic_string<charT>& str2, \
