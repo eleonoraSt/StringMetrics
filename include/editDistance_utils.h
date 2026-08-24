@@ -20,6 +20,20 @@ short multibyteCharLenUTF16(char16_t highBytes);
 bool equalCharsUTF16(const std::u16string& str1, size_t pos1, const std::u16string& str2, size_t pos2);
 
 template <class charT>
+bool equalChars(const std::basic_string<charT>& str1, size_t pos1, const std::basic_string<charT>& str2, \
+                size_t pos2) {
+    short size = sizeof(charT);
+    switch (size) {
+    case 1:
+        return equalCharsUTF8(str1, pos1, str2, pos2);
+    case 2:
+        return equalCharsUTF16(str1, pos1, str2, pos2);
+    default:  // 4-byte chars do not have variable length
+        return str1.at(pos1) == str2.at(pos2);
+    }
+}
+
+template <class charT>
 size_t editDistance(const std::basic_string<charT>& str1, const std::basic_string<charT>& str2, \
                     bool transposition) {
     // O(n) memory instead of the matrix solution with O(n*m) memory
