@@ -4,6 +4,8 @@
 #include "include/editDistance.h"
 
 void MainWindow::MetricSlotWrapper(std::function<size_t(std::wstring, std::wstring)> func, QLabel* outputLabel) {
+    // Очистка - ввод - обработка - вывод
+    ui->ErrorMsg->setText("");
     std::wstring str1 = ui->textEdit->toPlainText().toStdWString();
     std::wstring str2 = ui->textEdit_2->toPlainText().toStdWString();
     size_t distance = func(str1, str2);
@@ -20,6 +22,7 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::ClearOutput() {
+    // Чтобы при изменении ввода удалялся неактуальный вывод
     ui->ErrorMsg->setText("");
     ui->LevensteinLabel->setText("");
     ui->DamerauLevensteinLabel->setText("");
