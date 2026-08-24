@@ -7,18 +7,19 @@
 #include <algorithm>  // min
 #include <utility>  // swap
 
-// Determines the length of the multibyte char
+// Determines the length of the variable length character in char
 short multibyteCharLenUTF8(char highByte);
 
-// Compares chars that might be multibyte in UTF-8 strings (1-byte chars)
+// Compares characters that may be of variable length in UTF-8 strings (1-byte chars)
 bool equalCharsUTF8(const std::string& str1, size_t pos1, const std::string& str2, size_t pos2);
 
-// Determines the length of the multibyte char16_t
+// Determines the length of the variable length character in char16_t
 short multibyteCharLenUTF16(char16_t highBytes);
 
-// Compares chars that might be multibyte in UTF-8 strings (1-byte chars)
+// Compares characters that may be of variable length in UTF-16 strings (2-byte chars)
 bool equalCharsUTF16(const std::u16string& str1, size_t pos1, const std::u16string& str2, size_t pos2);
 
+// Compares chars that may be multibyte
 template <class charT>
 bool equalChars(const std::basic_string<charT>& str1, size_t pos1, const std::basic_string<charT>& str2, \
                 size_t pos2) {
@@ -33,6 +34,7 @@ bool equalChars(const std::basic_string<charT>& str1, size_t pos1, const std::ba
     }
 }
 
+// Levenstein or Damerau-Levenstein
 template <class charT>
 size_t editDistance(const std::basic_string<charT>& str1, const std::basic_string<charT>& str2, \
                     bool transposition) {
@@ -72,7 +74,7 @@ size_t editDistance(const std::basic_string<charT>& str1, const std::basic_strin
 // May be needed later for Jaro
 template <class T>
 size_t transpositions(const std::vector<T>& perm) {
-    // perm содержит числа от 1 до perm.size() + 1
+    // perm contains numbers from 1 to perm.size() + 1
     size_t size = perm.size();
     std::vector<bool> visited(size, false);
     size_t transpos = 0;

@@ -40,6 +40,7 @@ bool equalCharsUTF8(const std::string& str1, size_t pos1, const std::string& str
 }
 
 short multibyteCharLenUTF16(char16_t highBytes) {
+    // May throw: std::invalid_argument
     if (highBytes >= MIN_CONTINUATION_2_BYTES) {  // not the high byte
         throw std::invalid_argument("Position points at continuation byte");
     }
