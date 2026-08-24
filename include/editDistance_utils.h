@@ -7,6 +7,11 @@
 #include <algorithm>  // min
 #include <utility>  // swap
 
+#define UPPER_2_BITS_MASK 0xC0
+#define UPPER_BIT_MASK 0x80
+#define MIN_INITIAL_2_BYTES 0xD800
+#define MIN_CONTINUATION_2_BYTES 0xDC00
+
 // Determines the length of the variable length character in char
 short multibyteCharLenUTF8(char highByte);
 
@@ -23,8 +28,7 @@ bool equalCharsUTF16(const std::u16string& str1, size_t pos1, const std::u16stri
 template <class charT>
 bool equalChars(const std::basic_string<charT>& str1, size_t pos1, const std::basic_string<charT>& str2, \
                 size_t pos2) {
-    short size = sizeof(charT);
-    switch (size) {
+    switch (sizeof(charT)) {
     case 1:
         return equalCharsUTF8(str1, pos1, str2, pos2);
     case 2:
@@ -32,6 +36,29 @@ bool equalChars(const std::basic_string<charT>& str1, size_t pos1, const std::ba
     default:  // 4-byte chars do not have variable length
         return str1.at(pos1) == str2.at(pos2);
     }
+}
+
+template <class charT>
+bool isContinuation(charT character) {
+    switch (sizeof(charT)) {
+    case 1:
+        return (character & UPPER_2_BITS_MASK) == UPPER_BIT_MASK;
+    case 2:
+        return character > MIN_CONTINUATION_2_BYTES;
+    case 4:  // 4-byte chars do not have variable length
+        return false;
+    }
+}
+
+template <class charT>
+size_t sizeInVarLengthChar(const std::basic_string<charT>& str) {
+    size_t size = str.size();
+    if (sizeof str[0] == 4) return size;  // 4-byte chars do not have variable length
+    size_t continuation = 0;
+    for (size_t index = 0; index < size; index++) {
+        if (isContinuation(str[index])) continuation++;
+    }
+    return size - continuation;
 }
 
 // Levenstein or Damerau-Levenstein

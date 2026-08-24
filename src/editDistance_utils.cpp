@@ -2,10 +2,6 @@
 
 #include <stdexcept>
 
-#define UPPER_BIT_MASK 0x80
-#define MIN_INITIAL_2_BYTES 0xD800
-#define MIN_CONTINUATION_2_BYTES 0xDC00
-
 short multibyteCharLenUTF8(char highByte) {
     // May throw: std::invalid_argument
     char mask = UPPER_BIT_MASK;
