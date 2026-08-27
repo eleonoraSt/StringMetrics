@@ -1,8 +1,6 @@
 #ifndef EDITDISTANCE_H
 #define EDITDISTANCE_H
 
-#include <stdexcept>
-
 #include "editDistance_utils.h"
 
 template <class charT>
