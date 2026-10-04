@@ -1,9 +1,6 @@
 cmake_minimum_required(VERSION 3.19)
 project(StringMetrics LANGUAGES CXX)
 
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTOUIC ON)
-
 find_package(Qt6 6.11 REQUIRED COMPONENTS Core Gui Widgets)
 
 qt_standard_project_setup()
